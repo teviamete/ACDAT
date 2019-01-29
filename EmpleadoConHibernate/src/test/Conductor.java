@@ -13,6 +13,7 @@ import test.ManejadorCriaturitas;
  */
 public class Conductor {
     public static void main(String[] args) {
+<<<<<<< Updated upstream
 //        final byte id = 50;
 //        final String nombre = "Jessica";
 //
@@ -31,5 +32,12 @@ public class Conductor {
         surprise = (Regalo)ses.get(Regalo.class, id);
         System.out.println(surprise.toString());
         ses.close();
+=======
+        final long id = 11, otro = 15, idr = 4;
+        final String nombre = "Jimena";
+        //Empleado r;
+        ManejadorCriaturitas me = new ManejadorCriaturitas();
+        me.crearCriaturita (nombre,id);
+>>>>>>> Stashed changes
     }
 }
