@@ -1,50 +1,58 @@
-
 package persistente;
+// Generated 29-ene-2019 11:52:53 by Hibernate Tools 4.3.1
 
-/**
- *
- * @author leo
- */
- 
-import javax.persistence.*;
- 
-/**
- *
- * @author Leo
- */
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 @Entity
-@Table(name = "Criaturitas")
-public class Criaturita {
- 
-    @Id
-    @GeneratedValue
-    @Column(name = "Id")
-    private Long id;
-    @Column(name = "Nombre")
-    private String nombre;
- 
+@Table(name="Criaturitas"
+)
+public class Criaturita  implements java.io.Serializable {
+
+    @Id 
+
+    @Column(name="Id", nullable=false)	
+     private byte id;
+     
+    @Column(name="Nombre")     
+     private String nombre;
+
     public Criaturita() {
     }
- 
-    public Criaturita(String nombre) {
-        this.nombre = nombre;
- 
+
+    public Criaturita(byte id) {
+        this.id = id;
     }
- 
-    public Long getId() {
-        return id;
+    public Criaturita(byte id, String nombre) {
+       this.id = id;
+       this.nombre = nombre;
     }
- 
-    public String getNombre() {
-        return nombre;
+   
+    public byte getId() {
+        return this.id;
     }
- 
-    public void setId(Long id) {
+    
+    public void setId(byte id) {
         this.id = id;
     }
 
+    
+
+    public String getNombre() {
+        return this.nombre;
+    }
+    
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
- 
+
+
+
+
 }
+
+

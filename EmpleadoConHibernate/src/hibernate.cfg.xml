@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="hibernate.session_factory_name">conexion.HibernateUtil</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
     <property name="hibernate.connection.url">jdbc:sqlserver://localhost:1433;databaseName=Ejemplos</property>
     <property name="hibernate.connection.username">prueba</property>
@@ -10,5 +10,6 @@
     <property name="hibernate.enable_lazy_load_no_trans">true</property>
     <property name="hibernate.show_sql">true</property>
     <mapping class="persistente.Criaturita"/>
+    <mapping class="persistente.Regalo"/>
   </session-factory>
 </hibernate-configuration>

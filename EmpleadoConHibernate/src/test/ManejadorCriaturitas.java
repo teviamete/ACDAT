@@ -10,9 +10,11 @@ import javax.persistence.TypedQuery;
  * @author Leo
  */
 public class ManejadorCriaturitas {
-    public void crearCriaturita (String nombre, long id){
+    public void crearCriaturita (String nombre, byte id){
         Transaction tran;
-        Session ses = HibernateUtil.getSessionFactory().openSession();
+        SessionFactory instancia = HibernateUtil.buildSessionFactory();
+        Session ses = instancia.openSession();
+//        Session ses = HibernateUtil.buildSessionFactory();
         tran = ses.beginTransaction();
         Criaturita nene = new Criaturita();
         nene.setNombre(nombre);
@@ -25,7 +27,8 @@ public class ManejadorCriaturitas {
     public void cambiarNombre (String nombre, byte id){
         Criaturita nene;
         Transaction tran;
-        Session ses = HibernateUtil.getSessionFactory().openSession();
+        SessionFactory instancia = HibernateUtil.buildSessionFactory();
+        Session ses = instancia.openSession();
         tran = ses.beginTransaction();
         nene = new Criaturita ();
         nene.setNombre (nombre);
@@ -36,7 +39,8 @@ public class ManejadorCriaturitas {
     public void borrar (byte id){
         Criaturita nene;
         Transaction tran;
-        Session ses = HibernateUtil.getSessionFactory().openSession();
+        SessionFactory instancia = HibernateUtil.buildSessionFactory();
+        Session ses = instancia.openSession();
         tran = ses.beginTransaction();
         nene = new Criaturita ();
         ses.delete (nene);
@@ -45,22 +49,25 @@ public class ManejadorCriaturitas {
     }
     public Criaturita recuperar (byte id){
         Criaturita nene;
-        Session ses = HibernateUtil.getSessionFactory().openSession();
+        SessionFactory instancia = HibernateUtil.buildSessionFactory();
+        Session ses = instancia.openSession();
         nene = (Criaturita)ses.get(Criaturita.class, id);
         ses.close();
         return nene;
     }
 
-    public void listaEmpleados (List<Criaturita> lista){
-        Session ses = HibernateUtil.getSessionFactory().openSession();
-        for (Criaturita actual:lista){
-            // El objeto es detached y con esto pasa a persistent
-            ses.update(actual);
-            System.out.println(cadenaEmpleado(actual));
+    public void listaCriaturitas (){
+        Criaturita actual;
+        SessionFactory instancia = HibernateUtil.buildSessionFactory();
+        Session ses = instancia.openSession();
+
+        for (Object unObjeto : ses.createQuery("FROM Criaturita").getResultList()){
+            actual = (Criaturita)unObjeto;
+            System.out.println(cadenaCriaturita(actual));
         }
         ses.close();
     }
-    public String cadenaEmpleado (Criaturita c){
+    public String cadenaCriaturita (Criaturita c){
         String cad;
         cad = "ID: "+c.getId() + "  Nombre: " + c.getNombre();
         return cad;
