@@ -2,16 +2,21 @@ package persistente;
 // Generated 29-ene-2019 11:52:53 by Hibernate Tools 4.3.1
 
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="Criaturitas"
 )
-public class Criaturita  implements java.io.Serializable {
+public class CriaturitaConRegalos  implements java.io.Serializable {
 
     @Id 
 
@@ -21,13 +26,17 @@ public class Criaturita  implements java.io.Serializable {
     @Column(name="Nombre")     
      private String nombre;
 
-    public Criaturita() {
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<RegaloParaCriaturitaConRegalos> regalitos = new ArrayList<>();
+
+    public CriaturitaConRegalos() {
     }
 
-    public Criaturita(byte id) {
+    public CriaturitaConRegalos(byte id) {
         this.id = id;
     }
-    public Criaturita(byte id, String nombre) {
+    public CriaturitaConRegalos(byte id, String nombre) {
        this.id = id;
        this.nombre = nombre;
     }
@@ -51,6 +60,13 @@ public class Criaturita  implements java.io.Serializable {
     }
 
 
+    public List<RegaloParaCriaturitaConRegalos> getRegalitos() {
+        return regalitos;
+    }
+
+    public void setRegalitos(List<RegaloParaCriaturitaConRegalos> regalitos) {
+        this.regalitos = regalitos;
+    }
 
 
 }

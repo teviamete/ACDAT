@@ -21,12 +21,10 @@ public class HibernateUtil {
         try {
             return new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
-<<<<<<< Updated upstream
+
             System.err.println("Initial SessionFactory creation failed." + ex);
-=======
             // Log the exception. 
             System.err.println("No se ha podido crear el SessionFactory inicial. " + ex);
->>>>>>> Stashed changes
             throw new ExceptionInInitializerError(ex);
         }
     }

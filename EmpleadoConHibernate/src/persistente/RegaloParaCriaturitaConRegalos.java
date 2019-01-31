@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="Regalos"
 )
-public class Regalo implements Serializable {
+public class RegaloParaCriaturitaConRegalos implements Serializable {
     @Id 
 
     @Column(name="Id", nullable=false)	    
@@ -51,9 +51,9 @@ public class Regalo implements Serializable {
     @JoinColumn(name = "GoesTo",
             foreignKey = @ForeignKey(name = "FK_RegalosCriaturitas")
     )
-    private Criaturita propietario;
+    private CriaturitaConRegalos propietario;
 
-    public Regalo() {
+    public RegaloParaCriaturitaConRegalos() {
     }
     
     public int getId() {
@@ -88,7 +88,7 @@ public class Regalo implements Serializable {
         return precio;
     }
 
-    public Criaturita getPropietario() {
+    public CriaturitaConRegalos getPropietario() {
         return propietario;
     }
 // Setters
@@ -124,7 +124,7 @@ public class Regalo implements Serializable {
         this.precio = precio;
     }
 
-    public void setPropietario(Criaturita propietario) {
+    public void setPropietario(CriaturitaConRegalos propietario) {
         this.propietario = propietario;
     }
     @Override

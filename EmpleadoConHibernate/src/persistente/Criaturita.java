@@ -50,6 +50,11 @@ public class Criaturita  implements java.io.Serializable {
         this.nombre = nombre;
     }
 
+    @Override
+    public String toString() {
+        return "Criaturita{" + "id=" + id + ", nombre=" + nombre + '}';
+    }
+
 
 
 
