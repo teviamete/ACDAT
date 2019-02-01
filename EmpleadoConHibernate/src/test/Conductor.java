@@ -10,7 +10,7 @@ import persistente.*;
  * @author Leo
  */
 public class Conductor {
-    private static void recuperaRegaloConCriaturita(Session s, byte id){
+    private static void recuperaRegaloConCriaturita(Session s, int id){
  
         Regalo surprise;
 
@@ -22,6 +22,7 @@ public class Conductor {
         CriaturitaConRegalos nene;
      
         nene = (CriaturitaConRegalos)s.get(CriaturitaConRegalos.class, id);
+        System.out.println();
         System.out.println(nene.toString());
         System.out.println("Regalos");
         int cont = 1;
@@ -34,11 +35,13 @@ public class Conductor {
 
         SessionFactory instancia = HibernateUtil.buildSessionFactory();
         try (Session ses = instancia.openSession()) {
-            byte idR = 1, idC = 5;
-        //    recuperaRegaloConCriaturita(ses,idR);
+            int idR = 6;
+            byte idC = 3;
+//            recuperaRegaloConCriaturita(ses,idR);
             System.out.println("======================================================");
             recuperaCriaturitaConRegalos (ses,idC);
+            ses.close();
         }
-
+        
     }
 }
