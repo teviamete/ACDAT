@@ -1,11 +1,9 @@
 package persistente;
-// Generated 29-ene-2019 11:52:53 by Hibernate Tools 4.3.1
+// 
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.*;
+import javax.persistence.*;
 
 
 @Entity
@@ -20,6 +18,9 @@ public class Criaturita  implements java.io.Serializable {
      
     @Column(name="Nombre")     
      private String nombre;
+    
+    @ManyToMany(cascade = {CascadeType.ALL},mappedBy="listaLectores")
+    private List<Cuento> listaCuentos=new ArrayList();
 
     public Criaturita() {
     }
@@ -40,14 +41,20 @@ public class Criaturita  implements java.io.Serializable {
         this.id = id;
     }
 
-    
-
     public String getNombre() {
         return this.nombre;
     }
     
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public List<Cuento> getListaCuentos() {
+        return listaCuentos;
+    }
+
+    public void setListaCuentos(List<Cuento> listaCuentos) {
+        this.listaCuentos = listaCuentos;
     }
 
     @Override
