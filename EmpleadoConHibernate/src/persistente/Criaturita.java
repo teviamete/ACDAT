@@ -1,7 +1,6 @@
 package persistente;
 // 
 
-
 import java.util.*;
 import javax.persistence.*;
 

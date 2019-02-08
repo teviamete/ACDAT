@@ -22,9 +22,8 @@ public class Cuento implements Serializable{
     @Column(name="Tema")
     private String tema;
     
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="Lecturas", joinColumns={@JoinColumn(name="IdCuento")}, inverseJoinColumns={@JoinColumn(name="Id")})
-    private List<Criaturita> listaLectores=new ArrayList();
+    @ManyToMany(targetEntity = Criaturita.class,cascade = {CascadeType.ALL},mappedBy="listaCuentos")
+    private List<Criaturita> listaLectores = new ArrayList();
 
     public Cuento() {
     }
