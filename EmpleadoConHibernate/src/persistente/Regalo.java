@@ -6,7 +6,7 @@ package persistente;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.*;
-
+//
 /**
  *
  * @author leo
