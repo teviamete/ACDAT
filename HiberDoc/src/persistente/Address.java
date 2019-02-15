@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -21,13 +22,15 @@ import javax.persistence.Table;
 public class Address  implements java.io.Serializable {
 
 @Id 
-
+@GeneratedValue
     
    @Column(name="id", unique=true, nullable=false)
      private long id;
 
    @Column(name="number")
      private String number;
+   
+   private String postalCode;
    
    @Column(name="street")
      private String street;
@@ -38,12 +41,11 @@ public class Address  implements java.io.Serializable {
     public Address() {
     }
 
-	
     public Address(long id) {
         this.id = id;
     }
-    public Address(long id, String number, String street) {
-       this.id = id;
+    public Address(String street, String number, String postalCode) {
+       this.postalCode = postalCode;
        this.number = number;
        this.street = street;
     }
@@ -57,7 +59,6 @@ public class Address  implements java.io.Serializable {
         this.id = id;
     }
 
-    
  
     public String getNumber() {
         return this.number;
@@ -67,8 +68,15 @@ public class Address  implements java.io.Serializable {
         this.number = number;
     }
 
-    
+    public List<Person> getOwners() {
+        return owners;
+    }
 
+    public void setOwners(List<Person> owners) {
+        this.owners = owners;
+    }
+
+    
     public String getStreet() {
         return this.street;
     }
@@ -76,9 +84,6 @@ public class Address  implements java.io.Serializable {
     public void setStreet(String street) {
         this.street = street;
     }
-
-
-
 
 }
 

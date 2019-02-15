@@ -18,8 +18,8 @@ public class Criaturita  implements java.io.Serializable {
     @Column(name="Nombre")     
      private String nombre;
     
-    @ManyToMany(cascade = {CascadeType.ALL},mappedBy="listaLectores")
-    private List<Cuento> listaCuentos=new ArrayList();
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+     private List<Cuento> listaCuentos=new ArrayList();
 
     public Criaturita() {
     }

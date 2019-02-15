@@ -31,15 +31,28 @@ public class Conductor {
             cont++;
         }
     }
+    private static void recuperaCriaturitaConCuentos (Session s, byte id){
+        Criaturita nene;
+     
+        nene = (Criaturita)s.get(Criaturita.class, id);
+        System.out.println();
+        System.out.println(nene.toString());
+        System.out.println("Cuentos que ha leído");
+        int cont = 1;
+        for(Cuento historia:nene.getListaCuentos()){
+            System.out.println(cont+" -> "+historia.toString());
+            cont++;
+        }
+    }
     public static void main(String[] args) {
 
         SessionFactory instancia = HibernateUtil.buildSessionFactory();
         try (Session ses = instancia.openSession()) {
             int idR = 6;
-            byte idC = 3;
+            byte idC = 2;
 //            recuperaRegaloConCriaturita(ses,idR);
             System.out.println("======================================================");
-            recuperaCriaturitaConRegalos (ses,idC);
+            recuperaCriaturitaConCuentos (ses,idC);
             ses.close();
         }
         

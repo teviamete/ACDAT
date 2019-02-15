@@ -22,7 +22,8 @@ public class Cuento implements Serializable{
     @Column(name="Tema")
     private String tema;
     
-    @ManyToMany(targetEntity = Criaturita.class,cascade = {CascadeType.ALL},mappedBy="listaCuentos")
+//    @ManyToMany(targetEntity = Criaturita.class,cascade = {CascadeType.ALL},mappedBy="listaCuentos")
+    @ManyToMany(mappedBy = "listaCuentos")
     private List<Criaturita> listaLectores = new ArrayList();
 
     public Cuento() {
@@ -66,6 +67,11 @@ public class Cuento implements Serializable{
 
     public void setListaLectores(List<Criaturita> listaLectores) {
         this.listaLectores = listaLectores;
+    }
+
+    @Override
+    public String toString() {
+        return "Cuento{" + "id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", tema=" + tema + ", listaLectores=" + listaLectores + '}';
     }
     
     
