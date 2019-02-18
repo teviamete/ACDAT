@@ -32,9 +32,9 @@ public class Conductor {
         }
     }
     private static void recuperaCriaturitaConCuentos (Session s, byte id){
-        Criaturita nene;
+        CriaturitaConRegalos nene;
      
-        nene = (Criaturita)s.get(Criaturita.class, id);
+        nene = (CriaturitaConRegalos)s.get(CriaturitaConRegalos.class, id);
         System.out.println();
         System.out.println(nene.toString());
         System.out.println("Cuentos que ha leído");

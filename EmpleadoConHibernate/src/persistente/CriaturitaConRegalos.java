@@ -10,6 +10,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -31,6 +32,9 @@ public class CriaturitaConRegalos  implements java.io.Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="GoesTo")
     private List<RegaloParaCriaturitaConRegalos> regalitos = new ArrayList<>();
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+     private List<Cuento> listaCuentos=new ArrayList();
 
     public CriaturitaConRegalos() {
     }
@@ -66,6 +70,13 @@ public class CriaturitaConRegalos  implements java.io.Serializable {
 
     public void setRegalitos(List<RegaloParaCriaturitaConRegalos> regalitos) {
         this.regalitos = regalitos;
+    }
+    public List<Cuento> getListaCuentos() {
+        return listaCuentos;
+    }
+
+    public void setListaCuentos(List<Cuento> listaCuentos) {
+        this.listaCuentos = listaCuentos;
     }
     @Override
     public String toString() {
